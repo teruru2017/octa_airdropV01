@@ -1,0 +1,97 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Aclonica";
+    src: url(./fonts/ModernAntiqua-Regular.ttf) format("truetype");
+}
+
+html,
+body {
+    height: 100%;
+}
+
+a,
+a:active,
+a:visited {
+    text-decoration: none;
+}
+
+body {
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    background-color: #0f0d1a;
+    color: #fff;
+    font-family: "Aclonica";
+}
+
+.btn {
+    font-family: "Aclonica";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: #f7d535;
+    outline: none;
+
+    user-select: none;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:hover {
+    }
+}
+.btn-lg{
+    padding: 10px 24px;
+}
+.ml-3 {
+    margin-left: 20px;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    max-width: 1280px;
+    width: 100%;
+}
+section{
+    padding: 5rem 0;
+
+    h1{
+        font-size: 32px;
+    }
+}
+.text-center{
+    text-align: center;
+}
+
+.coming-soon-container{
+    text-align: center;
+    margin-top: 260px;
+
+    h1{
+        font-size: 72px;
+    }
+}
+
+// ::-webkit-scrollbar {
+//     background-color: #0f0d1a;
+//     width: 8px;
+//     height: 10px;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//     background-color: rgba(247, 211, 54, .4);
+//     border-radius: 8px;
+// }
