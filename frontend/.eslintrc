@@ -1,0 +1,68 @@
+{
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["./src"]
+      }
+    }
+  },
+  "extends": ["airbnb"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "rules": {
+    "camelcase": 0,
+    "linebreak-style": 0,
+    "max-len": 0,
+    "semi": ["error", "never"],
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
+    "react/jsx-filename-extension": 0,
+    "react/prefer-stateless-function": 0,
+    "react/no-danger": 0,
+    "react/no-did-mount-set-state": 0,
+    "react/button-has-type": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-max-props-per-line": 0,
+    "fp/no-unused-expression": 0,
+    "fp/no-mutation": 0,
+    "fp/no-let": 0,
+    "fp/no-this": 0,
+    "fp/no-class": 0,
+    "fp/no-throw": 0,
+    "fp/no-delete": 0,
+    "fp/no-mutating-methods": 0,
+    "fp/no-loops": 0,
+    "better/no-new": 0,
+    "no-script-url": 0,
+    "no-confusing-arrow": 0,
+    "no-case-declarations": 0,
+    "fp/no-nil": 0,
+    "better/no-ifs": 0,
+    "better/explicit-return": 0,
+    "jsx-a11y/href-no-hash": "off",
+    "import/prefer-default-export": 0,
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-undef": 0,
+    "no-debugger": "warn",
+    "no-underscore-dangle": "off",
+    "no-nested-ternary": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "global-require": "off",
+    "react/no-array-index-key": "off",
+    "no-restricted-globals": 0,
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["draft", "sketch", "outline"]
+      }
+    ],
+    "no-unused-vars": "warn",
+    "arrow-body-style": "off"
+  }
+}

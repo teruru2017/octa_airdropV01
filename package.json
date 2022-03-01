@@ -1,0 +1,20 @@
+{
+  "name": "@dapp-vue3/monorepo",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "contracts"
+  ],
+  "scripts": {
+    "test": "yarn workspace contracts run test",
+    "start:node": "yarn workspace contracts run node",
+    "deploy:local": "yarn workspace contracts run deploy:local",
+    "dev": "yarn workspace frontend run start",
+    "build:contracts": "yarn workspace contracts run build",
+    "build:vue": "yarn workspace frontend run build",
+    "build": "yarn build:contracts && yarn build:vue"
+  }
+}

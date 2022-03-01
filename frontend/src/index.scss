@@ -1,0 +1,67 @@
+html,
+body,
+#root {
+  font-size: 10px;
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 1.8px;
+  background-color: #0f0a18;
+  overflow: overlay;
+}
+
+// Custom for react toastify
+.Toastify__toast {
+  padding: 10px 10px 10px 10px !important;
+}
+
+.Toastify__toast--success {
+  background: none !important;
+  background-image: url('./assets/images/toastify-success-background.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+.Toastify__toast--error {
+  clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 19px) !important;
+  background: linear-gradient(180deg, #ff4646 0%, #562735 100%) !important;
+}
+
+.Toastify__toast--warning {
+  background: none !important;
+  background-image: url('./assets/images/toastify-warning-background.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+.Toastify__close-button {
+  margin-top: 2px !important;
+}
+
+.Toastify__toast-body {
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 24px;
+  letter-spacing: 1px;
+  & > div {
+    font-family: 'Orbitron', sans-serif;
+    color: #fefefe;
+  }
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms, transform 200ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 200ms, transform 200ms;
+}
