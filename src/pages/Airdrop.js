@@ -4,7 +4,8 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import Web3Modal from 'web3modal'
 //import { BscscanProvider } from "@ethers-ancillary/bsc";
-import NFTBox from '../contracts/THTESTNFT1155.json'
+import octaAirAbi from '../contracts/abi/OctaBoxAirdropWL.json'
+import octaBoxAbi from '../contracts/abi/OctaBoxFac.json'
 function Airdrop() {
     const [nfts, setNFts] = useState([])
     const [loadingState, setLoadingState] = useState('not-loaded')
@@ -19,7 +20,7 @@ function Airdrop() {
 
     async function loadWhilelist() {
         // what we want to load:
-        // ***provider, tokenContract, marketContract, data for our marketItems***
+        // ***provider, octaAir, marketContract, data for our marketItems***
 
         //const provider = new ethers.providers.JsonRpcProvider("https://data-seed-prebsc-1-s1.binance.org:8545", 97)
         //const provider = new ethers.providers.JsonRpcProvider("bsc-testnet")
@@ -44,28 +45,29 @@ function Airdrop() {
 
         const provider = new ethers.providers.Web3Provider(connection)
         const signer = provider.getSigner();
-        const tokenContract = new ethers.Contract(NFTBox.TcontractAddress, NFTBox.abi, signer);
+        const octaAir = new ethers.Contract(octaAirAbi.TcontractAddress, octaAirAbi.abi, signer);
+        const octaBox = new ethers.Contract(octaBoxAbi.TcontractAddress, octaBoxAbi.abi, signer);
         // const provider = new ethers.providers.JsonRpcProvider()
-        // const tokenContract = new ethers.Contract(NFTBox.TcontractAddress, NFTBox.abi, provider)
+        // const octaAir = new ethers.Contract(NFTBox.TcontractAddress, NFTBox.abi, provider)
         //const marketContract = new ethers.Contract(nftmarketaddress, KBMarket.abi, provider)
         //const data = await marketContract.fetchMarketTokens()
-        //const data = await tokenContract.isWhitelistClaim(address)
+        //const data = await octaAir.isWhitelistClaim(address)
         console.log("provider : ", provider)
-        console.log(tokenContract)
-        console.log("contract address : ", tokenContract.address)
+        console.log(octaAir)
+        console.log("contract address : ", octaAir.address)
 
-        const data = await tokenContract.balanceOf(address[0], 0);
+        const data = await octaBox.balanceOf(address[0]);
         console.log("balanceOf 1 : ", data.toString())
-        const data2 = await tokenContract.getWhitelistByAccount(address[0]);
+        const data2 = await octaAir.getWhitelistByAccount(address[0]);
         console.log("data2 : ", data2)
         console.log("whitelist : ", data2[0])
         console.log("claim : ", data2[1])
         console.log("box type : ", data2[2].toNumber())
         console.log("box quota : ", data2[3].toNumber())
-        const data3 = await tokenContract.balanceOf(address[0], data2[2].toNumber());
+        const data3 = await octaBox.balanceOf(address[0]);
         console.log("balanceOf 2 : ", data3.toNumber())
 
-        // const transaction = await tokenContract.claimedAirdropWhitelist();
+        // const transaction = await octaAir.claimedAirdropWhitelist();
         // console.log("--1--")
         // let tx = await transaction.wait();
         // console.log("--2--")
@@ -73,7 +75,7 @@ function Airdrop() {
         // console.log("--3--")
 
         // try {
-        //   const response = await tokenContract.balanceOf(address[0], 0);
+        //   const response = await octaAir.balanceOf(address[0], 0);
         //   // if(!response.ok) {
         //   //   throw new Error('Something went wrong');
         //   // }
@@ -87,7 +89,7 @@ function Airdrop() {
         // //let aa = ethers.utils.parseEther(data)
         // //console.log(aa)
         // try {
-        //   const data2 = await tokenContract.isWhitelistClaim(address[0]);
+        //   const data2 = await octaAir.isWhitelistClaim(address[0]);
         //   console.log("data2 : ", data2)
         // } catch (err) {
         //   console.log("Error: ", err)
@@ -120,7 +122,7 @@ function Airdrop() {
 
         console.log("------------end---------------")
         // const items = await Promise.all(data.map(async i => {
-        //   const tokenUri = await tokenContract.tokenURI(i.tokenId)
+        //   const tokenUri = await octaAir.tokenURI(i.tokenId)
         //   // we want get the token metadata - json 
         //   const meta = await axios.get(tokenUri)
         //   let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
@@ -161,11 +163,11 @@ function Airdrop() {
         const connection = await web3Modal.connect();
         const provider = new ethers.providers.Web3Provider(connection)
         const signer = provider.getSigner();
-        const tokenContract = new ethers.Contract(NFTBox.TcontractAddress, NFTBox.abi, signer);
+        const octaAir = new ethers.Contract(octaAirAbi.TcontractAddress, octaAirAbi.abi, signer);
         console.log("provider : ", provider)
-        console.log(tokenContract)
-        console.log("contract address : ", tokenContract.address)
-        const transaction = await tokenContract.claimedAirdropWhitelist();
+        console.log(octaAir)
+        console.log("contract address : ", octaAir.address)
+        const transaction = await octaAir.claimedAirdropWhitelist();
         let tx = await transaction.wait();
         let event = tx.events[0];
         console.log(event)
@@ -194,9 +196,16 @@ function Airdrop() {
                                     ? `Address :  ${userAddr.substring(0, 6)}...${userAddr.substring(userAddr.length - 4)}`
                                     : ""}
                         </h5>
+                        <script>
+                            let isUWhitelist = true;
+                            let txt = bool.toString();
+                            document.getElementById("isUWhitelist").innerHTML = typeof text;
+                        </script>
                         <h5>
                             {isUWhitelist === null
+
                                 ? "Whitelist"
+
                                 : isUWhitelist
                                     ? `Whitelist :  ${isUWhitelist}`
                                     : `Whitelist :  ${isUWhitelist}`}
